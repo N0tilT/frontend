@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /app
 
 # Копируем package.json и package-lock.json файлы и устанавливаем зависимости
-COPY ./client/package*.json ./
+COPY ./package*.json ./
 RUN npm install
 
 # Копируем все файлы из текущей директории в контейнер

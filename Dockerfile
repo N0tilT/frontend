@@ -5,8 +5,8 @@ FROM node:latest
 WORKDIR /app
 
 # Копируем package.json и package-lock.json файлы и устанавливаем зависимости
-COPY package.json package-lock.json /app/
 RUN npm install
+COPY package.json package-lock.json /app/
 
 # Копируем все файлы из текущей директории в контейнер
 COPY . /app

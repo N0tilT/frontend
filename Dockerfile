@@ -3,7 +3,7 @@ WORKDIR /app
 
 RUN npm install -g npm@8.12.1
 
-COPY ./package*.json ./
+COPY ./webapp/package*.json ./
 RUN npm install
 
 COPY . .

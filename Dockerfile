@@ -1,21 +1,14 @@
-# Используем официальный образ Node в качестве базового образа
-FROM node:latest
-
-# Устанавливаем рабочую директорию внутри контейнера
+FROM node:16
 WORKDIR /app
 
-# Копируем package.json и package-lock.json файлы и устанавливаем зависимости
-COPY ./package*.json ./app
+RUN npm install -g npm@8.12.1
+
+COPY ./package*.json ./
 RUN npm install
 
-# Копируем все файлы из текущей директории в контейнер
-COPY . /app
+COPY . .
+#RUN npm run build
 
-# Собираем приложение
-RUN npm run build
+EXPOSE 8080
 
-# Определяем, что приложение будет слушать порт 80. (Примечание: Podman не требует явного указания портов при запуске контейнера)
-# EXPOSE 80
-
-# Команда для запуска сервера
-CMD ["npm", "run", "serve"]
+CMD [ "npm", "run", "dev" ]

@@ -11,5 +11,6 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["cd", "webapp"]
-CMD [ "npm", "run", "dev", "--", "--host", "--port", "8080" ]
+RUN cd webapp
+WORKDIR /app/webapp
+CMD [ "npm", "run", "dev"]
